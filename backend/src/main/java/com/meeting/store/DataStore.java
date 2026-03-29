@@ -98,7 +98,7 @@ public class DataStore {
     public List<Reservation> getReservationsByRoomId(Long roomId) {
         List<Reservation> result = new ArrayList<>();
         for (Reservation r : reservations.values()) {
-            if (r.getRoomId().equals(roomId)) {
+            if (r.getRoomId().equals(roomId) && !"CANCELLED".equals(r.getStatus())) {
                 result.add(r);
             }
         }
