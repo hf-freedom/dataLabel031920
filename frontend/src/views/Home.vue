@@ -280,7 +280,7 @@ const loadReservations = async () => {
   if (!selectedRoom.value) return
   const res = await getReservationsByRoom(selectedRoom.value.id)
   const dateStr = selectedDate.value
-  reservations.value = res.data.filter(r => r.startTime.startsWith(dateStr))
+  reservations.value = res.data.filter(r => r.startTime.startsWith(dateStr) && r.status !== 'CANCELLED')
 }
 
 const availableStartTimes = computed(() => {
